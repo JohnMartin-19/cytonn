@@ -5,4 +5,3 @@ class CustomUser(AbstractUser):
     name = models.CharField(max_length = 50)
     email= models.EmailField(('email address'), unique=True)
     password = models.CharField(max_length =12)
-    
