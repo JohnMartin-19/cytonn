@@ -6,5 +6,5 @@ class CustomUser(AbstractUser):
     email= models.EmailField(('email address'), unique=True)
     password = models.CharField(max_length =100)
 
-    def  __str__(self,name):
-        return name                               # __unic
+    def  __str__(self):
+        return self.name                               
