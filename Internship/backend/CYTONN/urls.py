@@ -23,5 +23,6 @@ admin.site.index_title = "Welcome to CYTONN Events Portal"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/users/', include ('users.urls')),
+    path('api/v1/events/',include('events.urls')),
     path('api/v1/tickets/', include( 'tickets.urls')),
 ]
