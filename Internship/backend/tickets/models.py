@@ -20,3 +20,13 @@ class Ticket(models.Model):
 
     def __str__(self):
         return f"{self.ticket_type} Ticket - KSH{self.price} | {self.title}"
+    
+
+class Reserved(models.Model):
+    name = models.CharField(max_length = 20)
+    phone_number = models.CharField(max_length = 15)
+    email = models.EmailField(('email address'),unique = True)
+    tickets = models.ForeignKey(Ticket,on_delete = models.CASCADE, default = '--')
+
+    def __str__(self):
+        return f'Reservation by {self.name} for {self.tickets}'
