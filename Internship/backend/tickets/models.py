@@ -19,4 +19,4 @@ class Ticket(models.Model):
         super(Ticket, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.ticket_type} Ticket - KSH{self.price}"
+        return f"{self.ticket_type} Ticket - KSH{self.price} | {self.title}"
