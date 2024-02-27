@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #local
     'users.apps.UsersConfig',
     'events.apps.EventsConfig',
+    'tickets.apps.TicketsConfig',
 ]
 
 MIDDLEWARE = [
