@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ProductDisplay.css';
 
-const ProductDisplay = ({ addToCart }) => {
+const ProductDisplay = ({ bookTicket }) => {
   
     const [events,setEvent] = useState([])
     useEffect(()=>{
@@ -27,7 +27,7 @@ const ProductDisplay = ({ addToCart }) => {
           <p>Starting:{event.start_date}</p>
           <p>Ending:{event.end_date}</p>
           <p>Attendees:{event.attendees}</p>
-          <button onClick={() => addToCart(event)}>Add to Cart</button>
+          <button onClick={() => bookTicket(event)}>Book Ticket</button>
         </div>
       ))}
     </div>

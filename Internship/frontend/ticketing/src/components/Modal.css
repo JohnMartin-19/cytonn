@@ -1,6 +1,6 @@
 .Modal,
 .ConfirmationModal {
-  background-color: white;
+  background-color: rgb(88, 85, 85);
   padding: 20px;
   border-radius: 5px;
   text-align: center;
@@ -9,5 +9,5 @@
 .Modal p,
 .ConfirmationModal p {
   margin: 0 0 20px;
-  color: #333;
+  color: #f4f1f1;
 }

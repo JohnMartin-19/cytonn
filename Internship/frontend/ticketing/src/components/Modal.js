@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Modal.css';
 
-const Modal = ({ closeModal }) => {
+const Modal = ({ addToCart,closeModal }) => {
   const navigate = useNavigate();
 
   const goToCart = () => {
