@@ -2,31 +2,32 @@ import React, { useEffect, useState } from 'react';
 import './ProductDisplay.css';
 
 const ProductDisplay = ({ addToCart }) => {
-  /*
-  const products = [
-    { id: 1, name: 'Hoodie', price: 10, imageUrl: 'hoodie.png' },
-    { id: 2, name: 'T-Shirt', price: 15, imageUrl: 'tee.png' },
-    //added an item
-    { id: 3, name: 'Jeans', price: 30, imageUrl: 'jeans.jpg' },
-  ];
-  */
-  const [products,setProduct] = useState([])
-  useEffect(()=> {
-      fetch('http://127.0.0.1:8000/api/v1/events/')
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-          setProduct(data)
-        })
-  },[setProduct])
+  
+    const [events,setEvent] = useState([])
+    useEffect(()=>{
+      fetch("http://127.0.0.1:8000/api/v1/events/")
+        .then(function(response){response.json()
+        .then(function(data) {
+            console.log(data);
+            setEvent(data)
+        });
+      })
+        .catch(function(error) {
+          console.log('Fetch Error:', error);
+        });
+      },[setEvent])
   return (
-    <div className="ProductDisplay">
-      {products.map((product) => (
-        <div key={product.id} className="ProductItem">
-          <img src={product.imageUrl} alt={product.name} />
-          <h2>{product.name}</h2>
-          <p>${product.price}</p>
-          <button onClick={() => addToCart(product)}>Add to Cart</button>
+    <div className="EventDisplay">
+      {events.map((event) => (
+        <div key={event.id} className="EventItem">
+          <img src={event.image} alt={event.name} />
+          <h2>{event.title}</h2>
+          <p>{event.description}</p>
+          <p>Location:{event.location}</p>
+          <p>Starting:{event.start_date}</p>
+          <p>Ending:{event.end_date}</p>
+          <p>Attendees:{event.attendees}</p>
+          <button onClick={() => addToCart(event)}>Add to Cart</button>
         </div>
       ))}
     </div>

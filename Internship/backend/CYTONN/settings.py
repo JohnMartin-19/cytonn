@@ -46,9 +46,17 @@ INSTALLED_APPS = [
     'tickets.apps.TicketsConfig',
 ]
 
+REST_FRAMEWORK = { # new
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+        ],
+}
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -61,13 +69,8 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:8000",
 )
 
-CSRF_TRUSTED_ORIGIN = ["http://localhost:3000"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 
-REST_FRAMEWORK = { # new
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
-        ],
-}
 
 ROOT_URLCONF = 'CYTONN.urls'
 

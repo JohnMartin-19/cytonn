@@ -1,4 +1,4 @@
-.ProductDisplay {
+.EventDisplay {
   display: flex;
   flex-direction: row; 
   flex-wrap: wrap;
@@ -6,8 +6,16 @@
   justify-content: center; 
   padding: 20px;
 }
-
-.ProductItem {
+.EventDisplay button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.EventItem {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
@@ -15,19 +23,19 @@
   min-width: 200px; 
 }
 
-.ProductItem img {
+.EventItem img {
   max-height: 200px;
   height: auto;
 }
 
-.ProductItem h2,
-.ProductItem p {
+.EventItem h2,
+.EventItem p {
   margin: 10px 0;
 }
   
   /* Responsive styles */
   @media (max-width: 768px) {
-    .ProductDisplay {
+    .EventDisplay {
       padding: 10px;
     }
   }
