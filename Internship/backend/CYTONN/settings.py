@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #3rd parties
     'rest_framework',
+    'corsheaders',
     #local
     'users.apps.UsersConfig',
     'events.apps.EventsConfig',
@@ -55,6 +56,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
+
+CSRF_TRUSTED_ORIGIN = ["http://localhost:3000"]
 
 REST_FRAMEWORK = { # new
     "DEFAULT_PERMISSION_CLASSES": [
