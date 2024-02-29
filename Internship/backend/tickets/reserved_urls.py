@@ -1,6 +1,8 @@
 from django.urls import path
-from .views import  ReservedList,ReservedDetail
+from rest_framework.urlpatterns import format_suffix_patterns
+from .views import make_reservation,reservation_detail
 urlpatterns = [
-    path('<int:pk>/', ReservedDetail.as_view(),name = 'reserved_detail'),
-    path('',ReservedList.as_view(),name='reseved_list')
+    path('<int:pk>/', reservation_detail,name = 'reserved_detail'),
+    path('',make_reservation,name='reseved_list')
 ]
+urlpatterns = format_suffix_patterns(urlpatterns)  # to allow requests with
