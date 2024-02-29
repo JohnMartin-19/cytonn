@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './ProductDisplay.css';
-
-const ProductDisplay = ({ bookTicket }) => {
-  
+import { useNavigate } from 'react-router-dom';
+const ProductDisplay = () => {
+  const navigate = useNavigate()
+  const goToTicket = () => {
+    
+    navigate('/ticket');
+  };
     const [events,setEvent] = useState([])
     useEffect(()=>{
       fetch("http://127.0.0.1:8000/api/v1/events/")
@@ -27,7 +31,7 @@ const ProductDisplay = ({ bookTicket }) => {
           <p>Starting:{event.start_date}</p>
           <p>Ending:{event.end_date}</p>
           <p>Attendees:{event.attendees}</p>
-          <button onClick={() => bookTicket(event)}>Book Ticket</button>
+          <button onClick={goToTicket}>Book Ticket</button>
         </div>
       ))}
     </div>

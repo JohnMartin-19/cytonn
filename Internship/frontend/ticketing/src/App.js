@@ -7,6 +7,7 @@ import Modal from './components/Modal';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import './App.css';
+import Ticket from './components/tickets';
 
 function App() {
   const [userProfile, setUserProfile] = useState(null);
@@ -52,10 +53,18 @@ function App() {
             element={
               <>
                 <ProductDisplay bookTicket = {bookTicket} />
-                {showModal && <Modal closeModal={closeModal} addToCart={addToCart}/>}
+                
               </>
             } 
           />
+          <Route path='/ticket' element =
+          {
+            <>
+          <Ticket addToCart={addToCart}/>
+          {showModal && <Modal closeModal={closeModal} addToCart={addToCart}/>}
+          </>
+          }
+          / >
           <Route path="/cart" element={<Cart cartItems={cartItems} />} />
           <Route path="/checkout" element={<Checkout clearCart={clearCart}/>} />
         </Routes>
