@@ -18,17 +18,17 @@ class ReservedList(generics.ListCreateAPIView):
     queryset = Reserved.objects.all()
     serializer_class = ReseverdSerializer
 
-   
+    @csrf_exempt
+    def submit_form(request):
+        if request.method == 'POST':
+            data = request.POST # Or request.body for JSON data
+            # Process form data, save to database, etc.
+            return JsonResponse({'message': 'Form submitted successfully'})
+        else:
+            return JsonResponse({'error': 'Invalid request method'})
+
 class  ReservedDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Reserved.objects.all()
     serializer_class=ReseverdSerializer
     
-
-@csrf_exempt
-def submit_form(request):
-    if request.method == 'POST':
-            data = request.POST # Or request.body for JSON data
-            # Process form data, save to database, etc.
-            return JsonResponse({'message': 'Form submitted successfully'})
-    else:
-            return JsonResponse({'error': 'Invalid request method'})
+    
