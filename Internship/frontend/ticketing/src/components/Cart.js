@@ -6,7 +6,7 @@ const Cart = ({ cartItems }) => {
   const navigate = useNavigate();
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
+    return cartItems.reduce((total, ticket) => total + ticket.quantity * ticket.price, 0);
   };
 
   const goToCheckout = () => {
@@ -18,8 +18,8 @@ const Cart = ({ cartItems }) => {
       <table>
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Name</th>
+            <th>Ticket Number</th>
+            <th>Ticket_Type</th>
             <th>Quantity</th>
             <th>Price</th>
           </tr>
@@ -30,12 +30,11 @@ const Cart = ({ cartItems }) => {
               <td colSpan="4">Your cart is empty.</td>
             </tr>
           ) : (
-            cartItems.map((item) => (
-              <tr key={item.id}>
-                <td><img src={item.imageUrl} alt={item.name} /></td>
-                <td>{item.name}</td>
-                <td>{item.quantity}</td>
-                <td>${item.price}</td>
+            cartItems.map((ticket) => (
+              <tr key={ticket.id}>
+                <td>{ticket.title}</td>
+                <td>{ticket.quantity}</td>
+                <td>${ticket.price}</td>
               </tr>
             ))
           )}

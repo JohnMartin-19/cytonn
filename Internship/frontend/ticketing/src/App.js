@@ -31,12 +31,13 @@ function App() {
       sessionStorage.setItem('cart', JSON.stringify(updatedItems));
       return updatedItems
     });
-    //setShowModal(true);
+    setShowModal(true);
   };
+  /*
   const bookTicket = (event)=>{
     setShowModal(true);
   }
-
+  */
   const clearCart = () => {
     setCartItems([]);
   };
@@ -60,7 +61,7 @@ function App() {
           <Route path='/ticket' element =
           {
             <>
-          <Ticket addToCart={addToCart} bookTicket={bookTicket}/>
+          <Ticket addToCart={addToCart}/>
           {showModal && <Modal closeModal={closeModal} addToCart={addToCart}/>}
           </>
           }
