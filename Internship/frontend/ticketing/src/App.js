@@ -60,7 +60,7 @@ function App() {
           <Route path='/ticket' element =
           {
             <>
-          <Ticket addToCart={addToCart}/>
+          <Ticket addToCart={addToCart} bookTicket={bookTicket}/>
           {showModal && <Modal closeModal={closeModal} addToCart={addToCart}/>}
           </>
           }
