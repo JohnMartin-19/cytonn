@@ -52,7 +52,7 @@ function App() {
             path="/" 
             element={
               <>
-                <ProductDisplay bookTicket = {bookTicket} />
+                <ProductDisplay  />
                 
               </>
             } 
