@@ -6,17 +6,40 @@ import './Checkout.css';
 
 const Checkout = ( {clearCart} ) => {
   
+    
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const navigate = useNavigate();
 
  
-  const [formData, setFormData] = useState({});
-
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
+    let formData = {
+      name: document.getElementById('name').value,
+      email:document.getElementById('email').value,
+      number:document.getElementById('phone_number').value
+    }
+    const myHeaders = new Headers();
+      myHeaders.append("Authorization", "App 87a0277c2f3378953877089eed496a54-7f4cda49-dbf7-4d6e-bef1-4c8f0b34a50c");
+      myHeaders.append("Accept", "application/json");
+
+    const formdata = new FormData();
+      formdata.append("from", "johnnkonge2020@gmail.com");
+      formdata.append("subject", "Free trial");
+      formdata.append("to", formData.email);
+      formdata.append("text", "Hi TestUser, this is a test message from Infobip. Have a nice day!");
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow"
+    };
+    fetch("https://e19152.api.infobip.com/email/3/send", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+    
     setShowConfirmationModal(true)
     clearCart();
     try {
@@ -26,7 +49,8 @@ const Checkout = ( {clearCart} ) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      });
+      },[]);
+      console.log(formData)
       const data = await response.json();
       console.log(data); // Handle response from Django backend
     } catch (error) {
@@ -52,19 +76,16 @@ const Checkout = ( {clearCart} ) => {
         <label htmlFor="Name">Name</label>
           <input 
             type="text" 
-            name="Name" 
-            id="Name"
-            value={formData.Name} 
-            onChange={handleChange}
+            name="name" 
+            id="name"
+             
           />
 
           <label htmlFor="email">Email</label>
           <input 
             type="email" 
             name="email" 
-            id="email"
-            value={formData.email} 
-            onChange={handleChange} 
+            id="email"  
             required 
           />
 
@@ -72,9 +93,7 @@ const Checkout = ( {clearCart} ) => {
           <input 
             type="text" 
             name="phone_number" 
-            id="phone_number"
-            value={formData.address} 
-            onChange={handleChange} 
+            id="phone_number" 
             required 
           />
 
