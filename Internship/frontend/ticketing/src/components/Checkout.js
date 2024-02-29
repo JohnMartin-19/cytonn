@@ -36,7 +36,7 @@ const Checkout = ( {clearCart} ) => {
         redirect: "follow"
     };
     fetch("https://e19152.api.infobip.com/email/3/send", requestOptions)
-      .then((response) => response.text())
+      .then((response) => response.json())
       .then((result) => console.log(result))
       .catch((error) => console.error(error));
     
