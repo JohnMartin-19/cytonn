@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
-
-function Ticket({addToCart,closeModal,bookTicket}){
+import "./ticket.css"
+function Ticket({addToCart}){
     const [tickets,setTicket] = useState([])
     useEffect(()=>{
         fetch("http://127.0.0.1:8000/api/v1/tickets/")
@@ -15,20 +15,18 @@ function Ticket({addToCart,closeModal,bookTicket}){
         });
         },[setTicket])
   return (
-    <div className="ModalOverlay">
-      <div className="Modal">
+    <div className="TicketDisplay">
       {tickets.map((ticket) => (
         <div key={ticket.id} className="TicketItem">
           <h2>{ticket.title}</h2>
           <p>{ticket.ticket_type}</p>
           <p>KSH{ticket.price}</p>
-          <button onClick={addToCart}>Go to Cart</button>
-          <button onClick={closeModal}>Continue Shopping</button>
+          <button onClick={addToCart}>Reserve Ticket </button>
         </div>
       ))}
         
         
-      </div>
+      
     </div>
 )}
 export default Ticket
