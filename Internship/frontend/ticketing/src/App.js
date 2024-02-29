@@ -62,7 +62,7 @@ function App() {
           {
             <>
           <Ticket addToCart={addToCart}/>
-          {showModal && <Modal closeModal={closeModal} addToCart={addToCart}/>}
+          {showModal && <Modal closeModal={closeModal}/>}
           </>
           }
           / >

@@ -21,7 +21,7 @@ function Ticket({addToCart}){
           <h2>{ticket.title}</h2>
           <p>{ticket.ticket_type}</p>
           <p>KSH{ticket.price}</p>
-          <button onClick={addToCart}>Reserve Ticket </button>
+          <button onClick={() => addToCart(ticket)}>Reserve Ticket </button>
         </div>
       ))}
         

@@ -20,8 +20,8 @@ const Cart = ({ cartItems }) => {
           <tr>
             <th>Ticket Number</th>
             <th>Ticket_Type</th>
-            <th>Quantity</th>
             <th>Price</th>
+            <th>Total Price</th>
           </tr>
         </thead>
         <tbody>
